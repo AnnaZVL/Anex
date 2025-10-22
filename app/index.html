@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/style.min.css"> 
+</head>
+
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="header__container">
+                <img class="logo" src="/images/dist/logo.png" alt="Логотип">
+                <nav class="navigation">
+                    <ul class="menu">
+                        <li class="item">
+                            <a class="link" href="#"><span> подбор тура</span></a>
+                        </li>
+                        <li class="item">
+                            <a class="link active" href="#tours">горящие туры</a>
+                        </li>
+                        <li class="item">
+                            <a class="link" href="#">страны</a>
+                        </li>
+                        <li class="item">
+                            <a class="link" href="#">отели</a>
+                        </li>
+                    </ul>
+                </nav>
+                <div class="left">
+                    <div class="actions">
+                        <button class="btn">
+                            оставить заявку
+                        </button>
+                        <div class="icons">
+    
+                            <a class="icon" href="tel:+8005001010">
+                                <svg class="icon icon--phone">
+                                    <use xlink:href="/images/dist/sprite.svg#icon--phone"></use>
+                                </svg>
+                            </a>
+                            <a class="icon" href="#">
+                                <svg class="icon icon--map">
+                                    <use xlink:href="/images/dist/sprite.svg#icon--map"></use>
+                                </svg>
+                            </a>
+                        </div>
+                        <span class="actions__line"></span>
+                    </div>
+                    <div class="burger">
+                    <button class="burger-btn" id="burger" aria-label="Открыть выпадающее меню">
+                        <span class="line"></span>
+                        <span class="line"></span>
+                        <span class="line"></span>
+                    </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="burger-menu" id="menu">
+            <div class="burger-menu__inner">
+                <div class="burger-menu__item burger-menu-item">
+                    <p class="burger-menu-item__title">популярные страны</p>
+                    <ul class="burger-menu-item__list burger-list">
+                        <li class="burger-list__item">
+                            <a href="#" class="burger-list__link">Турция</a>
+                        </li>
+                        <li class="burger-list__item">
+                            <a href="#" class="burger-list__link">Египет</a>
+                        </li>
+                        <li class="burger-list__item">
+                            <a href="#" class="burger-list__link">Мальдивы</a>
+                        </li>
+                        <li class="burger-list__item">
+                            <a href="#" class="burger-list__link">ОАЭ</a>
+                        </li>
+                        <li class="burger-list__item">
+                            <a href="#" class="burger-list__link">Куба</a>
+                        </li>
+                        <li class="burger-list__item">
+                            <a href="#" class="burger-list__link">Шри-Ланка</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="burger-menu__item burger-menu-item">
+                    <p class="burger-menu-item__title">туристам</p>
+                    <ul class="burger-menu-item__list burger-list">
+                        <li class="burger-list__item">
+                            <a href="#" class="burger-list__link">Страны</a>
+                        </li>
+                        <li class="burger-list__item">
+                            <a href="#" class="burger-list__link">Отели</a>
+                        </li>
+                        <li class="burger-list__item">
+                            <a href="#" class="burger-list__link">Подбор тура</a>
+                        </li>
+                        <li class="burger-list__item">
+                            <a href="#tours" class="burger-list__link active">Горящие туры</a>
+                        </li>
+                        <li class="burger-list__item">
+                            <a href="#" class="burger-list__link">Как купить и оплатить тур</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="burger-menu__item burger-menu-item">
+                    <p class="burger-menu-item__title">компания</p>
+                    <ul class="burger-menu-item__list burger-list">
+                        <li class="burger-list__item">
+                            <a href="#" class="burger-list__link">О нас</a>
+                        </li>
+                        <li class="burger-list__item">
+                            <a href="#" class="burger-list__link">Отзывы</a>
+                        </li>
+                        <li class="burger-list__item">
+                            <a href="#" class="burger-list__link">Контакты</a>
+                        </li>
+                        <li class="burger-list__item">
+                            <a href="#" class="burger-list__link">Новости</a>
+                        </li>
+                        <li class="burger-list__item">
+                            <a href="#" class="burger-list__link">Priority</a>
+                        </li>
+                        <li class="burger-list__item">
+                            <a href="#" class="burger-list__link">Агентам</a>
+                        </li>
+                    </ul>
+                </div>
+    
+                <div class="burger-menu__actions">
+                    <button class="btn">
+                        оставить заявку
+                    </button>
+                    <div class="icons">
+                        <a class="icon" href="tel:+8005001010">
+                            <svg class="icon icon--phone">
+                                <use xlink:href="/images/dist/sprite.svg#icon--phone"></use>
+                            </svg>
+                        </a>
+                        <a class="icon" href="#">
+                            <svg class="icon icon--map">
+                                <use xlink:href="/images/dist/sprite.svg#icon--map"></use>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section class="hero">
+
+        <div class="hero__body">
+
+            <h1 class="hero__title">путешествия мечты</h1>
+
+            <h4 class="hero__subtitle">выбери свою</h4>
+
+            <svg class="hero__line">
+
+                <use xlink:href="/images/dist/sprite.svg#icon--line"></use>
+
+            </svg>
+
+            <div class="select">
+
+                <button class="btn btn--color">
+
+                    подобрать
+
+                </button>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <section class="tours" id="tours">
+
+        <div class="container">
+
+            <div class="section-title tours__title">
+
+                <h2 class="section-title__title">горящие туры</h2>
+
+                <p class="section-title__subtitle">Поймайте момент</p>
+
+                <p class="section-title__english">tours</p>
+
+            </div>
+
+    
+
+            <div class="tours__inner">
+
+                <div class="tours__slider swiper">
+
+                    <div class="swiper-wrapper">
+
+                        <div class="tours__card card swiper-slide">
+
+                            <img class="card__img" src="/images/dist/tours/slide_1.avif">
+
+                            <div class="card__body">
+
+                                <div class="card__top">
+
+                                    <span class="card__label">
+
+                                        9 дней
+
+                                    </span>
+
+                                    <span class="card__label">
+
+                                        25 000 ₽
+
+                                    </span>
+
+                                </div>
+
+                                <div class="card__bottom">
+
+                                    <div class="card__bottom-top">
+
+                                        <span class="card__title">Италия</span>
+
+                                        <span class="card__title">Венеция</span>
+
+                                    </div>
+
+                                    <p class="card__text">12-18 октября</p>
+
+                                    <a class="card__link" href="#">
+
+                                        узнать подробнее
+
+                                    </a>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                        <div class="tours__card card swiper-slide">
+
+                            <img class="card__img" src="/images/dist/tours/slide_2.avif">
+
+                            <div class="card__body">
+
+                                <div class="card__top">
+
+                                    <span class="card__label">
+
+                                        9 дней
+
+                                    </span>
+
+                                    <span class="card__label">
+
+                                        25 000 ₽
+
+                                    </span>
+
+                                </div>
+
+                                <div class="card__bottom">
+
+                                    <div class="card__bottom-top">
+
+                                        <span class="card__title">Италия</span>
+
+                                        <span class="card__title">Венеция</span>
+
+                                    </div>
+
+                                    <p class="card__text">12-18 октября</p>
+
+                                    <a class="card__link" href="#">
+
+                                        узнать подробнее
+
+                                    </a>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                        <div class="tours__card card swiper-slide">
+
+                            <img class="card__img" src="/images/dist/tours/slide_3.avif">
+
+                            <div class="card__body">
+
+                                <div class="card__top">
+
+                                    <span class="card__label">
+
+                                        9 дней
+
+                                    </span>
+
+                                    <span class="card__label">
+
+                                        25 000 ₽
+
+                                    </span>
+
+                                </div>
+
+                                <div class="card__bottom">
+
+                                    <div class="card__bottom-top">
+
+                                        <span class="card__title">Италия</span>
+
+                                        <span class="card__title">Венеция</span>
+
+                                    </div>
+
+                                    <p class="card__text">12-18 октября</p>
+
+                                    <a class="card__link" href="#">
+
+                                        узнать подробнее
+
+                                    </a>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                        <div class="tours__card card swiper-slide">
+
+                            <img class="card__img" src="/images/dist/tours/slide_4.avif">
+
+                            <div class="card__body">
+
+                                <div class="card__top">
+
+                                    <span class="card__label">
+
+                                        9 дней
+
+                                    </span>
+
+                                    <span class="card__label">
+
+                                        25 000 ₽
+
+                                    </span>
+
+                                </div>
+
+                                <div class="card__bottom">
+
+                                    <div class="card__bottom-top">
+
+                                        <span class="card__title">Италия</span>
+
+                                        <span class="card__title">Венеция</span>
+
+                                    </div>
+
+                                    <p class="card__text">12-18 октября</p>
+
+                                    <a class="card__link" href="#">
+
+                                        узнать подробнее
+
+                                    </a>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                        <div class="tours__card card swiper-slide">
+
+                            <img class="card__img" src="/images/dist/tours/slide_5.avif">
+
+                            <div class="card__body">
+
+                                <div class="card__top">
+
+                                    <span class="card__label">
+
+                                        9 дней
+
+                                    </span>
+
+                                    <span class="card__label">
+
+                                        25 000 ₽
+
+                                    </span>
+
+                                </div>
+
+                                <div class="card__bottom">
+
+                                    <div class="card__bottom-top">
+
+                                        <span class="card__title">Италия</span>
+
+                                        <span class="card__title">Венеция</span>
+
+                                    </div>
+
+                                    <p class="card__text">12-18 октября</p>
+
+                                    <a class="card__link" href="#">
+
+                                        узнать подробнее
+
+                                    </a>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                        <div class="tours__card card swiper-slide">
+
+                            <img class="card__img" src="/images/dist/tours/slide_6.avif">
+
+                            <div class="card__body">
+
+                                <div class="card__top">
+
+                                    <span class="card__label">
+
+                                        9 дней
+
+                                    </span>
+
+                                    <span class="card__label">
+
+                                        25 000 ₽
+
+                                    </span>
+
+                                </div>
+
+                                <div class="card__bottom">
+
+                                    <div class="card__bottom-top">
+
+                                        <span class="card__title">Италия</span>
+
+                                        <span class="card__title">Венеция</span>
+
+                                    </div>
+
+                                    <p class="card__text">12-18 октября</p>
+
+                                    <a class="card__link" href="#">
+
+                                        узнать подробнее
+
+                                    </a>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <div class="swiper-pagination tours__slider-pagination"></div>
+
+    
+
+                </div>
+
+                <div class="tours__slider-prev">
+
+                    <svg class="icon">
+
+                        <use xlink:href="/images/dist/sprite.svg#icon--arrow_left"></use>
+
+                    </svg>
+
+                </div>
+
+                <div class="tours__slider-next">
+
+                    <svg class="icon">
+
+                        <use xlink:href="/images/dist/sprite.svg#icon--arrow_right"></use>
+
+                    </svg>
+
+                </div>
+
+    
+
+            </div>
+
+        </div>
+
+    </section>
+<!-- <script src="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.js"></script> -->
+    <script type="module" src="js/main.min.js"></script>
+</body>
+
+</html>

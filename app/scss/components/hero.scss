@@ -1,0 +1,124 @@
+@use '../helpers/variables.scss' as *;
+
+.hero {   
+    min-height: 100vh; 
+    height: 100%;   
+    background-image: image-set(
+        '../../images/dist/hero/Hero.avif' type('image/avif'),
+        '../../images/dist/hero/Hero.webp' type('image/webp'),
+        '../../images/dist/hero/Hero.png' type('image/png')
+    );
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+
+    &__body {        
+        margin: 0 auto;
+        padding-top: 160px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 30px;        
+        max-width: 928px;
+        width: 100%;
+    }
+
+    &__title {
+        padding-bottom: 30px;
+        text-align: center;
+        font-weight: 800;
+        font-size: 8rem;
+        line-height: 8.43rem;
+        color: $color_white;
+        text-transform: uppercase;
+    }
+
+    &__subtitle {          
+        font-weight: 400;     
+        font-size: 1.75rem;
+        line-height: 2.06rem;
+        text-align: center;
+        text-transform: uppercase;
+        color: $color_white;
+    }
+
+    &__line {   
+        margin-bottom: 30px;  
+        width: 16px;
+        height: 88px;
+        color: $color_white;
+    }
+
+    .select {
+        padding: 12px;
+        background-color: $color_white;
+        border-radius: 30px;
+        max-width: 928px;
+        width: 100%;
+        max-height: 65px;
+
+        .btn {
+           text-align: right;
+        }
+    }
+}
+
+@media (max-width: 1024px) {
+    .hero {
+       &__body {
+            padding-left: 10px;
+            padding-right: 10px;
+            gap: 14px;
+       }
+
+        &__title {
+            padding-bottom: 8px;
+            font-size: 5.75rem;
+            line-height: 6.25rem;
+        }
+
+        &__subtitle {
+            font-size: 1.75rem;
+        }
+        
+    }
+}
+
+@media (max-width: 780px) {
+    .hero {
+        &__title {
+            padding-bottom: 0;
+            font-size: 3.5rem;            
+        }
+
+        &__subtitle {
+            font-size: 1.4rem;
+        }
+    }
+}
+
+@media (max-width: 568px) {
+    .hero {
+        min-height: 690px;
+        &__body {
+            padding-top: 125px;           
+            max-width: 290px;
+        }
+        &__title {            
+            font-size: 2.5rem; 
+            line-height: 2.5rem;           
+        }
+
+        &__subtitle {
+            font-size: 1rem;
+        }
+
+        &__line {
+            height: 51px;
+        }
+
+        .select {
+            height: 320px;
+        }
+    }
+}

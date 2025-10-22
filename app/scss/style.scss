@@ -1,0 +1,133 @@
+@use 'helpers/variables.scss' as *;
+@use 'helpers/fonts.scss' as *;
+@use 'helpers/mixins.scss' as *;
+@use 'components/header.scss' as *;
+@use 'components/hero.scss' as *;
+@use 'components/tours.scss' as *;
+
+// @import '../../node_modules/swiper/swiper-bundle'; //без расширения css
+html {
+    scroll-behavior: smooth;
+    box-sizing: border-box;
+}
+
+*, ::after, ::before {
+    box-sizing: inherit;
+}
+
+ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+    outline: none;
+}
+
+img {
+    width: 100%;
+    object-fit: cover;
+}
+
+h1, h2, h3, h4, h5, h6, p {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    margin: 0 auto;   
+    color: $color_black;   
+    @include font-default;
+    overflow-x: hidden;
+
+    .container {
+        margin: 0 auto;
+        padding: 0 15px;
+        max-width: 1150px;
+        width: 100%;            
+    }
+    
+    .btn {
+        padding: 10px 16px;
+        text-transform: uppercase;
+        background-color: transparent;
+        border: 1px solid $color_gray;
+        border-radius: 30px;
+        align-items: center;
+        font-weight: 500;
+        font-size: 0.875rem;
+        cursor: pointer;
+        transition: background 0.3s ease-in-out;
+
+        &:hover {
+          background-color: $color_gray-bg;
+        }
+
+        &--color {
+            background-color: $color_red;
+            color: $color_white;
+            border: none;
+
+            &:hover {
+                background-color: $color_red-active;
+            }
+        }
+    }
+
+    .section-title {
+        position: relative;
+        margin-bottom: 52px;
+        color: $color_text;
+        
+        &__title {
+            font-weight: 500;
+            font-size: 2.75rem;
+            line-height: 3.25rem;
+            text-transform: uppercase;            
+        }
+
+        &__subtitle {
+            font-weight: 300;
+            font-size: 1.5rem;
+            line-height: 1.75rem;
+            text-transform: uppercase;
+            color: $color_text;
+        }
+
+        &__english {
+            position: absolute;            
+            @include font-custom(3.25rem, 400, 'Millanova', 15.6rem);
+            font-family: 'Millanova';            
+            color: $color_gray-title;
+        }
+    }
+}
+
+@media (max-width: 1024px) {
+    body {
+        overflow-x: hidden;
+    }
+}
+@media (max-width: 568px) {
+    body {
+        .section-title {
+            &__title {
+                margin-bottom: 6px;
+                font-size: 1.75rem;
+                line-height: 100%;
+            }
+
+            &__subtitle {
+                font-size: 1rem;
+                line-height: 100%;
+            }
+
+            &__english {
+                font-size: 2.25rem;
+            }
+        }
+    }
+}

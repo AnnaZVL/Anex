@@ -1,0 +1,71 @@
+@font-face {
+  font-family: "Roboto";
+  src: url("/fonts/Roboto-Light.woff2") format("woff2"), 
+      url("/fonts/Roboto-Light.ttf") format("opentype");
+  font-weight: 200;
+  font-display: swap;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Roboto";
+  src: url("/fonts/Roboto-Regular.woff2") format("woff2"), 
+      url("/fonts/Roboto-Regular.ttf") format("opentype");
+  font-weight: 400;
+  font-display: swap;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Roboto";
+  src: url("/fonts/Roboto-Medium.woff2") format("woff2"), 
+      url("/fonts/Roboto-Medium.ttf") format("opentype");
+  font-weight: 500;
+  font-display: swap;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Roboto";
+  src: url("/fonts/Roboto-SemiBold.woff2") format("woff2"), 
+      url("/fonts/Roboto-SemiBold.ttf") format("opentype");
+  font-weight: 600;
+  font-display: swap;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Roboto";
+  src: url("/fonts/Roboto-Bold.woff2") format("woff2"), 
+      url("/fonts/Roboto-Bold.ttf") format("opentype");
+  font-weight: 700;
+  font-display: swap;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Roboto";
+  src: url("/fonts/Roboto-ExtraBold.woff2") format("woff2"), 
+      url("/fonts/Roboto-ExtraBold.ttf") format("opentype");
+  font-weight: 800;
+  font-display: swap;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Roboto";
+  src: url("/fonts/Roboto-Italic.woff2") format("woff2"), 
+      url("/fonts/Roboto-Italic.ttf") format("opentype");
+  font-weight: 400;
+  font-display: swap;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: "Millanova";
+  src: url("/fonts/Millanova.woff2") format("woff2"), 
+      url("/fonts/Millanova.ttf") format("opentype");
+  font-weight: 400;
+  font-display: swap;
+  font-style: normal;
+}
