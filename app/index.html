@@ -12,7 +12,7 @@
     <header class="header">
         <div class="container">
             <div class="header__container">
-                <img class="logo" src="/images/dist/logo.png" alt="Логотип">
+                <img class="logo" src="/images/logo.png" alt="Логотип">
                 <nav class="navigation">
                     <ul class="menu">
                         <li class="item">
@@ -35,26 +35,36 @@
                             оставить заявку
                         </button>
                         <div class="icons">
-    
-                            <a class="icon" href="tel:+8005001010">
+                            <div class="icon__inner">
                                 <svg class="icon icon--phone">
-                                    <use xlink:href="/images/dist/sprite.svg#icon--phone"></use>
+                                    <use xlink:href="images/sprite.svg#icon--phone"></use>
                                 </svg>
-                            </a>
-                            <a class="icon" href="#">
+                                <div class="box">
+                                    <a class="box__link" href="tel:+8005001010">
+                                        <span class="box__text">+ 8 (495) 800-10-10</span>
+                                    </a>
+                                    <a class="box__link" href="tel:+8005001010">
+                                        <span class="box__text">+ 8 (495) 800-10-10</span>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="icon__inner">
                                 <svg class="icon icon--map">
-                                    <use xlink:href="/images/dist/sprite.svg#icon--map"></use>
+                                    <use xlink:href="images/sprite.svg#icon--map"></use>
                                 </svg>
-                            </a>
+                                <div class="box">
+                                    <span class="box__text">Москва Россошанский проезд, дом 3, (1‑й этаж)</span>
+                                </div>
+                            </div>
                         </div>
                         <span class="actions__line"></span>
                     </div>
                     <div class="burger">
-                    <button class="burger-btn" id="burger" aria-label="Открыть выпадающее меню">
-                        <span class="line"></span>
-                        <span class="line"></span>
-                        <span class="line"></span>
-                    </button>
+                        <button class="burger-btn" id="burger" aria-label="Открыть выпадающее меню">
+                            <span class="line"></span>
+                            <span class="line"></span>
+                            <span class="line"></span>
+                        </button>
                     </div>
                 </div>
             </div>
@@ -134,13 +144,13 @@
                     </button>
                     <div class="icons">
                         <a class="icon" href="tel:+8005001010">
-                            <svg class="icon icon--phone">
-                                <use xlink:href="/images/dist/sprite.svg#icon--phone"></use>
+                            <svg class="icon icon--map">
+                                <use xlink:href="images/sprite.svg#icon--map"></use>
                             </svg>
                         </a>
                         <a class="icon" href="#">
                             <svg class="icon icon--map">
-                                <use xlink:href="/images/dist/sprite.svg#icon--map"></use>
+                                <use xlink:href="images/sprite.svg#icon--map"></use>
                             </svg>
                         </a>
                     </div>
@@ -159,7 +169,7 @@
 
             <svg class="hero__line">
 
-                <use xlink:href="/images/dist/sprite.svg#icon--line"></use>
+                <use xlink:href="/images/sprite.svg#icon--line"></use>
 
             </svg>
 
@@ -201,7 +211,7 @@
 
                         <div class="tours__card card swiper-slide">
 
-                            <img class="card__img" src="/images/dist/tours/slide_1.avif">
+                            <img class="card__img" src="/images/tours/slide_1.avif">
 
                             <div class="card__body">
 
@@ -247,7 +257,7 @@
 
                         <div class="tours__card card swiper-slide">
 
-                            <img class="card__img" src="/images/dist/tours/slide_2.avif">
+                            <img class="card__img" src="/images/tours/slide_2.avif">
 
                             <div class="card__body">
 
@@ -293,7 +303,7 @@
 
                         <div class="tours__card card swiper-slide">
 
-                            <img class="card__img" src="/images/dist/tours/slide_3.avif">
+                            <img class="card__img" src="/images/tours/slide_3.avif">
 
                             <div class="card__body">
 
@@ -339,7 +349,7 @@
 
                         <div class="tours__card card swiper-slide">
 
-                            <img class="card__img" src="/images/dist/tours/slide_4.avif">
+                            <img class="card__img" src="/images/tours/slide_4.avif">
 
                             <div class="card__body">
 
@@ -385,7 +395,7 @@
 
                         <div class="tours__card card swiper-slide">
 
-                            <img class="card__img" src="/images/dist/tours/slide_5.avif">
+                            <img class="card__img" src="/images/tours/slide_5.avif">
 
                             <div class="card__body">
 
@@ -431,7 +441,7 @@
 
                         <div class="tours__card card swiper-slide">
 
-                            <img class="card__img" src="/images/dist/tours/slide_6.avif">
+                            <img class="card__img" src="/images/tours/slide_6.avif">
 
                             <div class="card__body">
 
@@ -487,7 +497,7 @@
 
                     <svg class="icon">
 
-                        <use xlink:href="/images/dist/sprite.svg#icon--arrow_left"></use>
+                        <use xlink:href="/images/sprite.svg#icon--arrow_left"></use>
 
                     </svg>
 
@@ -497,7 +507,7 @@
 
                     <svg class="icon">
 
-                        <use xlink:href="/images/dist/sprite.svg#icon--arrow_right"></use>
+                        <use xlink:href="/images/sprite.svg#icon--arrow_right"></use>
 
                     </svg>
 
@@ -510,7 +520,511 @@
         </div>
 
     </section>
-<!-- <script src="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.js"></script> -->
+
+     <section class="hotels" id="hotels">
+
+         <div class="container">
+
+             <div class="section-title hotels__title">
+
+                 <h2 class="section-title__title">популярные отели</h2>
+
+                 <p class="section-title__subtitle">уют и роскошь в лучших отелях мира</p>
+
+                 <p class="section-title__english">hotels</p>
+
+             </div>
+
+     
+
+         </div>
+
+         <div class="hotels__slider swiper">
+
+             <div class="swiper-wrapper">
+
+                 <div class="hotels__card card swiper-slide">
+
+                     <img class="card__img" src="/images/hotels/slide_1.avif">
+
+                     <div class="card__body">
+
+                         <span class="card__rating">5</span>
+
+                         <div class="card__bottom">
+
+                             <div class="card__bottom-top">
+
+                                 <span class="card__title">Villa Flori Como</span>
+
+                             </div>
+
+                             <a class="card__link" href="#">
+
+                                 узнать подробнее
+
+                             </a>
+
+                         </div>
+
+                     </div>
+
+                 </div>
+
+                 <div class="hotels__card card swiper-slide">
+
+                     <img class="card__img" src="/images/hotels/slide_2.avif">
+
+                     <div class="card__body">
+
+                         <span class="card__rating">4.8</span>
+
+                         <div class="card__bottom">
+
+                             <div class="card__bottom-top">
+
+                                 <span class="card__title">Ritz-Carlton</span>
+
+                             </div>
+
+                             <a class="card__link" href="#">
+
+                                 узнать подробнее
+
+                             </a>
+
+                         </div>
+
+                     </div>
+
+                 </div>
+
+                 <div class="hotels__card card swiper-slide">
+
+                     <img class="card__img" src="/images/hotels/slide_3.avif">
+
+                     <div class="card__body">
+
+                         <span class="card__rating">4.8</span>
+
+                         <div class="card__bottom">
+
+                             <div class="card__bottom-top">
+
+                                 <span class="card__title">Ikos Dassia</span>
+
+                             </div>
+
+     
+
+                             <a class="card__link" href="#">
+
+                                 узнать подробнее
+
+                             </a>
+
+                         </div>
+
+                     </div>
+
+                 </div>
+
+                 <div class="hotels__card card swiper-slide">
+
+                     <img class="card__img" src="/images/hotels/slide_4.avif">
+
+                     <div class="card__body">
+
+                         <span class="card__rating">4.8</span>
+
+                         <div class="card__bottom">
+
+                             <div class="card__bottom-top">
+
+                                 <span class="card__title">JW Marriott Marquis</span>
+
+                             </div>
+
+     
+
+                             <a class="card__link" href="#">
+
+                                 узнать подробнее
+
+                             </a>
+
+                         </div>
+
+                     </div>
+
+                 </div>
+
+                 <div class="hotels__card card swiper-slide">
+
+                     <img class="card__img" src="/images/hotels/slide_5.avif">
+
+                     <div class="card__body">
+
+                         <span class="card__rating">4.9</span>
+
+                         <div class="card__bottom">
+
+                             <div class="card__bottom-top">
+
+                                 <span class="card__title">JW Marriott Marquis</span>
+
+                             </div>
+
+     
+
+                             <a class="card__link" href="#">
+
+                                 узнать подробнее
+
+                             </a>
+
+                         </div>
+
+                     </div>
+
+                 </div>
+
+                 <div class="hotels__card card swiper-slide">
+
+                     <img class="card__img" src="/images/hotels/slide_1.avif">
+
+                     <div class="card__body">
+
+                         <span class="card__rating">5</span>
+
+                         <div class="card__bottom">
+
+                             <div class="card__bottom-top">
+
+                                 <span class="card__title">Villa Flori Como</span>
+
+                             </div>
+
+                             <a class="card__link" href="#">
+
+                                 узнать подробнее
+
+                             </a>
+
+                         </div>
+
+                     </div>
+
+                 </div>
+
+                 <div class="hotels__card card swiper-slide">
+
+                     <img class="card__img" src="/images/hotels/slide_2.avif">
+
+                     <div class="card__body">
+
+                         <span class="card__rating">4.8</span>
+
+                         <div class="card__bottom">
+
+                             <div class="card__bottom-top">
+
+                                 <span class="card__title">Ritz-Carlton</span>
+
+                             </div>
+
+                             <a class="card__link" href="#">
+
+                                 узнать подробнее
+
+                             </a>
+
+                         </div>
+
+                     </div>
+
+                 </div>
+
+                 <div class="hotels__card card swiper-slide">
+
+                     <img class="card__img" src="/images/hotels/slide_3.avif">
+
+                     <div class="card__body">
+
+                         <span class="card__rating">4.8</span>
+
+                         <div class="card__bottom">
+
+                             <div class="card__bottom-top">
+
+                                 <span class="card__title">Ikos Dassia</span>
+
+                             </div>
+
+     
+
+                             <a class="card__link" href="#">
+
+                                 узнать подробнее
+
+                             </a>
+
+                         </div>
+
+                     </div>
+
+                 </div>
+
+                 <div class="hotels__card card swiper-slide">
+
+                     <img class="card__img" src="/images/hotels/slide_4.avif">
+
+                     <div class="card__body">
+
+                         <span class="card__rating">4.8</span>
+
+                         <div class="card__bottom">
+
+                             <div class="card__bottom-top">
+
+                                 <span class="card__title">JW Marriott Marquis</span>
+
+                             </div>
+
+     
+
+                             <a class="card__link" href="#">
+
+                                 узнать подробнее
+
+                             </a>
+
+                         </div>
+
+                     </div>
+
+                 </div>
+
+                 <div class="hotels__card card swiper-slide">
+
+                     <img class="card__img" src="/images/hotels/slide_5.avif">
+
+                     <div class="card__body">
+
+                         <span class="card__rating">4.9</span>
+
+                         <div class="card__bottom">
+
+                             <div class="card__bottom-top">
+
+                                 <span class="card__title">JW Marriott Marquis</span>
+
+                             </div>
+
+     
+
+                             <a class="card__link" href="#">
+
+                                 узнать подробнее
+
+                             </a>
+
+                         </div>
+
+                     </div>
+
+                 </div>
+
+             </div>
+
+             <div class="swiper-pagination hotels__slider-pagination"></div>
+
+     
+
+         </div>
+
+         <div class="hotels__list">
+
+             <div class="hotels__card card hotels__card--mobile">
+
+                     <img class="card__img" src="/images/hotels/slide_1.avif">
+
+                     <div class="card__body">
+
+                         <span class="card__rating">5</span>
+
+                         <div class="card__bottom">
+
+                             <div class="card__bottom-top">
+
+                                 <span class="card__title">Villa Flori Como</span>
+
+                             </div>
+
+                             <a class="card__link" href="#">
+
+                                 узнать подробнее
+
+                             </a>
+
+                         </div>
+
+                     </div>
+
+                 </div>
+
+                 <div class="hotels__card card hotels__card--mobile">
+
+                     <img class="card__img" src="/images/hotels/slide_2.avif">
+
+                     <div class="card__body">
+
+                         <span class="card__rating">4.8</span>
+
+                         <div class="card__bottom">
+
+                             <div class="card__bottom-top">
+
+                                 <span class="card__title">Ritz-Carlton</span>
+
+                             </div>
+
+                             <a class="card__link" href="#">
+
+                                 узнать подробнее
+
+                             </a>
+
+                         </div>
+
+                     </div>
+
+                 </div>
+
+                 <div class="hotels__card card hotels__card--mobile">
+
+                     <img class="card__img" src="/images/hotels/slide_3.avif">
+
+                     <div class="card__body">
+
+                         <span class="card__rating">4.8</span>
+
+                         <div class="card__bottom">
+
+                             <div class="card__bottom-top">
+
+                                 <span class="card__title">Ikos Dassia</span>
+
+                             </div>
+
+     
+
+                             <a class="card__link" href="#">
+
+                                 узнать подробнее
+
+                             </a>
+
+                         </div>
+
+                     </div>
+
+                 </div>
+
+                 <div class="hotels__card card hotels__card--mobile">
+
+                     <img class="card__img" src="/images/hotels/slide_4.avif">
+
+                     <div class="card__body">
+
+                         <span class="card__rating">4.8</span>
+
+                         <div class="card__bottom">
+
+                             <div class="card__bottom-top">
+
+                                 <span class="card__title">JW Marriott Marquis</span>
+
+                             </div>
+
+     
+
+                             <a class="card__link" href="#">
+
+                                 узнать подробнее
+
+                             </a>
+
+                         </div>
+
+                     </div>
+
+                 </div>
+
+                 <div class="hotels__card card hotels__card--mobile hidden">
+
+                     <img class="card__img" src="/images/hotels/slide_5.avif">
+
+                     <div class="card__body">
+
+                         <span class="card__rating">4.9</span>
+
+                         <div class="card__bottom">
+
+                             <div class="card__bottom-top">
+
+                                 <span class="card__title">JW Marriott Marquis</span>
+
+                             </div>
+
+     
+
+                             <a class="card__link" href="#">
+
+                                 узнать подробнее
+
+                             </a>
+
+                         </div>
+
+                     </div>
+
+                 </div>
+
+                 <div class="hotels__card card hotels__card--mobile hidden">
+
+                     <img class="card__img" src="/images/hotels/slide_1.avif">
+
+                     <div class="card__body">
+
+                         <span class="card__rating">5</span>
+
+                         <div class="card__bottom">
+
+                             <div class="card__bottom-top">
+
+                                 <span class="card__title">Villa Flori Como</span>
+
+                             </div>
+
+                             <a class="card__link" href="#">
+
+                                 узнать подробнее
+
+                             </a>
+
+                         </div>
+
+                     </div>
+
+                 </div>
+
+                 <button class="btn hotels__more" id="more">больше отелей</button>
+
+         </div>
+
+     </section>
+
     <script type="module" src="js/main.min.js"></script>
 </body>
 

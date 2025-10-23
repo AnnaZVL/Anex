@@ -3,10 +3,12 @@
   "version": "1.0.0",
   "description": "",
   "main": "gulpfile.js",
+  "homepage": "https://github.com/AnnaZVL/Anex.git",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "gulp dev",
-    "build": "gulp build"
+    "build": "gulp build",
+    "deploy": "npm run build && gh-pages -d dist"
   },
   "author": "",
   "license": "ISC",
@@ -24,6 +26,7 @@
     "gulp-imagemin": "^7.1.0",
     "gulp-include": "^2.4.1",
     "gulp-newer": "^1.4.0",
+    "gulp-replace": "^1.1.4",
     "gulp-sass": "^5.1.0",
     "gulp-sourcemaps": "^3.0.0",
     "gulp-svg-sprite": "^2.0.3",

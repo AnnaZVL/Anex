@@ -4,8 +4,8 @@
 @use 'components/header.scss' as *;
 @use 'components/hero.scss' as *;
 @use 'components/tours.scss' as *;
+@use 'components/hotels.scss' as *;
 
-// @import '../../node_modules/swiper/swiper-bundle'; //без расширения css
 html {
     scroll-behavior: smooth;
     box-sizing: border-box;
@@ -42,6 +42,7 @@ body {
     color: $color_black;   
     @include font-default;
     overflow-x: hidden;
+    background-color: $color_gray-bg;
 
     .container {
         margin: 0 auto;
@@ -99,9 +100,151 @@ body {
 
         &__english {
             position: absolute;            
-            @include font-custom(3.25rem, 400, 'Millanova', 15.6rem);
-            font-family: 'Millanova';            
+            @include font-custom(3.25rem, 400, 'Millanova', 15.6rem);                       
             color: $color_gray-title;
+            &::first-letter {
+                text-transform: uppercase;
+            }
+        }        
+    }
+
+    .card {
+        width: 256px;
+        height: 340px;
+        border-radius: 30px;
+        position: relative;
+        color: $color_white;
+        font-size: 0.875rem;
+        line-height: 100%;
+
+        &__img {
+            height: 100%;
+            border-radius: 30px;
+        }
+
+        &::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            z-index: 10;
+            background: linear-gradient(180deg, rgba(0, 0, 0, 0) 67.94%, rgba(0, 0, 0, 0.45) 100%);
+            border-radius: 30px;
+        }
+
+        &::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            z-index: 10;
+            background: rgba(0, 0, 0, 0.1);
+            border-radius: 30px;
+        }
+
+        &__body {
+            padding: 20px;
+            position: absolute;
+            inset: 0;
+            z-index: 100;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 15px;
+        }
+
+        &__top {
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            gap: 10px;
+        }
+
+        &__label {
+            padding: 2px 10px;
+            display: inline-block;
+            font-weight: 300;              
+            height: 21px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid $color_white; 
+            border-radius: 30px;        
+        }
+
+        &__rating { 
+            margin-left: auto; 
+            padding-top: 10px;
+            padding-right: 32px;           
+            position: relative;              
+            @include font-custom(4.06rem, 400, 'Chandra');
+
+            &::before {
+                content: '';
+                display: inline-block;
+                background-image: url('../../images/icon/star.svg');
+                width: 21px;
+                height: 20px;
+                position: absolute;
+                top: -5px;
+                right: 12px;
+            }
+
+        }
+
+        &__bottom {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: flex-start;
+            gap: 8px;
+        }
+
+        &__title {
+            margin-right: 10px;
+            display: inline-block;
+            font-weight: 500;                   
+            text-transform: uppercase;
+            position: relative;
+
+            &:nth-child(2) {
+                margin-right: 10px;
+                &::before {
+                    content: '';
+                    position: absolute;
+                    top: 50%;
+                    left: -10px;
+                    transform: translateY(-50%);                    
+                    width: 5px;
+                    height: 5px;
+                    border-radius: 50%;                    
+                    background-color: $color_white;
+                }
+            }
+        }
+
+        &__text {
+            font-weight: 500;
+        }
+
+        &__link {
+            font-weight: 300;
+            display: flex;
+            align-items: center;
+
+            &::after {
+                content: '';
+                display: inline-block;
+                background-image: url('../../images/icon/line_link.svg');
+                width: 41px;
+                height: 16px;
+                margin-left: 12px;
+                transition: transform 0.3s ease-in-out;
+            }
+
+            &:hover::after {
+                transform: translateX(10px);
+            }
+
         }
     }
 }

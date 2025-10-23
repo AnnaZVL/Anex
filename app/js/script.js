@@ -40,13 +40,11 @@ const swiperConfigs = {
           640: {
             width: 248,            
           },
-          768: {
-            //slidesPerView: 2.3,
+          768: {            
             spaceBetween: 32,
             width: 256
           },   
-          1024: {
-            // slidesPerView: 5.3,  
+          1024: {             
             width: 256          
           },          
         },
@@ -59,7 +57,30 @@ const swiperConfigs = {
           clickable: true,
         },
     },
-}
+    '.hotels__slider': {    
+        loop: true,
+        slidesPerView: 'auto', 
+        centeredSlides: true,    
+        autoplay: {
+            delay: 2500,
+            disableOnInteraction: false,
+        },             
+        watchSlidesProgress: true,
+        spaceBetween: 12,
+        resistanceRatio: 0,
+        touchRatio: 1,
+        pagination: {
+            el: '.hotels__slider-pagination',
+            clickable: true,
+        },
+        on: {
+            init: function(swiper) {                
+                swiper.autoplay.start(); 
+            }
+        }        
+      },
+  }
+
 document.addEventListener('DOMContentLoaded', function() {  
     const initSwipers = () => {    
         if (typeof Swiper === 'undefined') {
@@ -77,3 +98,14 @@ document.addEventListener('DOMContentLoaded', function() {
 
     initSwipers();
 });
+
+//MORE
+const btnMore = document.getElementById('more');
+const hotelsList = document.querySelectorAll('.hotels__card--mobile');
+
+btnMore.addEventListener('click', () => {
+  console.log('object, ', hotelsList.length);
+  hotelsList.forEach(item => {
+        item.classList.remove('hidden');
+    });
+})
