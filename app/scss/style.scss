@@ -5,6 +5,7 @@
 @use 'components/hero.scss' as *;
 @use 'components/tours.scss' as *;
 @use 'components/hotels.scss' as *;
+@use 'components/feedback.scss' as *;
 
 html {
     scroll-behavior: smooth;
@@ -58,6 +59,7 @@ body {
         border: 1px solid $color_gray;
         border-radius: 30px;
         align-items: center;
+        @include font-default;
         font-weight: 500;
         font-size: 0.875rem;
         cursor: pointer;
@@ -68,12 +70,24 @@ body {
         }
 
         &--color {
+            padding: 10px 28px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
             background-color: $color_red;
             color: $color_white;
             border: none;
+            min-width: 168px;
+            font-size: 1rem;
+            line-height: 1.18rem;
 
             &:hover {
                 background-color: $color_red-active;
+            }
+
+            svg {
+                width: 11px;
+                height: 11px;
             }
         }
     }

@@ -8,6 +8,8 @@ const autoprefixer = require('gulp-autoprefixer');
 const clean = require('gulp-clean');
 const include = require('gulp-include');
 const imagemin = require('gulp-imagemin');
+const webp = require('gulp-webp');
+const avif = require('gulp-avif');
 const newer = require('gulp-newer');
 const svg = require('gulp-svg-sprite');
 const fonter = require('gulp-fonter');
@@ -28,16 +30,22 @@ function htmlPage() {
         .pipe(include({
             includePaths: 'app/components'
         }))
-        .pipe(replace('src="/images/dist/', 'src="images/'))
-        .pipe(replace('href="/images/dist/', 'href="images/'))
-        .pipe(replace('src="/images/src/', 'src="images/'))    
-        .pipe(dest('app'))        
-        .pipe(gulpif(prod, htmlMin({
-            collapseWhitespace: true,
-          })))
-        .pipe(gulpif(prod, (dest('dist'))))
+        .pipe(dest('app'))
         .pipe(browserSync.stream())
-};
+}
+
+function htmlProd() {
+    return src('app/pages/*.html')
+        .pipe(include({
+            includePaths: 'app/components'
+        }))       
+        .pipe(replace('src="/images/', 'src="images/'))
+        .pipe(replace('href="/images/', 'href="images/'))       
+        .pipe(htmlMin({
+            collapseWhitespace: true,
+        }))
+        .pipe(dest('dist'))
+}
 
 function styles() {
     return src([
@@ -54,7 +62,7 @@ function styles() {
         }))
         .pipe(replace('url("/fonts/', 'url("../fonts/'))
         .pipe(replace("url('/fonts/", "url('../fonts/"))
-        .pipe(replace('../../images/dist/', '../images/'))
+        .pipe(replace('../../images/', '../images/'))
         .pipe(concat('style.min.css'))        
         .pipe(gulpif(!prod, sourcemaps.write()))
         .pipe(dest('app/css/'))         
@@ -76,20 +84,40 @@ function scripts() {
         .pipe(browserSync.stream())               
 };
 
-function images() {
-    return src('app/images/**/*.*')
-        .pipe(gulpif(!prod, newer('app/images'))) 
-        .pipe(gulpif(prod, dest('dist/images'))) 
-        .pipe(gulpif(!prod, dest('app/images'))) 
-        .pipe(browserSync.stream())    
+function imagesAvif() {
+    return src([
+        'app/images/**/*.{jpg,jpeg,png}',
+        '!app/images/**/*.svg',
+        '!app/images/**/*.avif',
+        '!app/images/**/*.webp'
+    ])        
+    .pipe(avif({ quality: 50 }))
+    .on('error', function(err) {
+        console.log('❌ AVIF error (continuing):', err.message);
+        this.emit('end');
+    })
+    .pipe(dest('app/images'));
 }
 
+function imagesMain() {
+    return src([
+        'app/images/**/*.{jpg,jpeg,png}',
+        '!app/images/**/*.svg',
+        '!app/images/**/*.avif', 
+        '!app/images/**/*.webp'
+    ])        
+    .pipe(webp())
+    .pipe(src('app/images/**/*.*'))        
+    .pipe(imagemin())
+    .pipe(dest('app/images'))
+    .pipe(gulpif(prod, dest('dist/images')))    
+    .pipe(browserSync.stream());
+}
+
+const images = parallel(imagesAvif, imagesMain);
 
 function svgSprite() {
-    return src('app/images/**/*.svg')
-    .on('data', function(file) {
-            console.log('Processing SVG:', file.relative);
-        })
+    return src(['app/images/**/*.svg', '!app/images/**/sprite.svg',])    
         .pipe(svg({
             mode: {
                 symbol: {
@@ -98,7 +126,7 @@ function svgSprite() {
                 }
             }
         }))       
-        .pipe(dest('app/images'))
+        .pipe(dest('app/images'))        
         .pipe(gulpif(prod, dest('dist/images'))) 
         .pipe(browserSync.stream()) 
 }
@@ -125,7 +153,8 @@ function watching() {
     watch(['app/components/*', 'app/pages/*'], htmlPage);
     watch(['app/scss/**/*.scss'], styles);
     watch(['app/js/script.js'], scripts); 
-    watch(['app/images/src'], images);
+    watch(['app/images'], images);
+    watch(['app/images/**/*.svg'], svgSprite);
     watch(['app/**/*.html']).on('change', browserSync.reload);   
 };
 
@@ -143,5 +172,5 @@ exports.fonts = fonts;
 exports.watching = watching;
 exports.clean = cleanDist;
 
-exports.dev = parallel(htmlPage, styles, scripts, images, fonts, watching);
-exports.build = series(isProd, cleanDist, htmlPage, styles, images, svgSprite, fonts, scripts);
+exports.dev = parallel(htmlPage, styles, scripts, images, svgSprite, fonts, watching);
+exports.build = series(isProd, cleanDist, htmlProd, styles, images, svgSprite, fonts, scripts);

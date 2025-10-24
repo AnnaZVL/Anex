@@ -1,0 +1,26 @@
+<section class="feedback" id="feedback">
+    <div class="container feedback__container">
+        <div class="feedback__inner">
+            <h2 class="feedback__title">не определились с <i>выбором</i>?</h2>
+            <p class="feedback__descr">Оставьте свой номер и наш специалист поможет вам с подбором тура</p>
+            <form class="feedback__form feedback-form" action="POST">
+                <div class="feedback-form__body">
+                    <label class="feedback-form__label" for="name">
+                        <input class="feedback-form__input" id="name" type="text" required placeholder="Имя">
+                    </label>
+
+                    <label class="feedback-form__label" for="tel">
+                        <input class="feedback-form__input" id="tel" type="number" required placeholder="Телефон">
+                    </label>
+                </div>
+                <button class="btn btn--color feedback-form__btn" type="submit">
+                    <span>отправить</span>
+                    <svg class="">
+                        <use xlink:href="/images/sprite.svg#icon--btn_arrow
+                    "></use>
+                    </svg>
+                </button>
+            </form>
+        </div>
+    </div>
+</section>

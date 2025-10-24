@@ -103,9 +103,11 @@ document.addEventListener('DOMContentLoaded', function() {
 const btnMore = document.getElementById('more');
 const hotelsList = document.querySelectorAll('.hotels__card--mobile');
 
-btnMore.addEventListener('click', () => {
-  console.log('object, ', hotelsList.length);
-  hotelsList.forEach(item => {
-        item.classList.remove('hidden');
-    });
-})
+if (btnMore) {
+  btnMore.addEventListener('click', () => {
+    console.log('object, ', hotelsList.length);
+    hotelsList.forEach(item => {
+          item.classList.remove('hidden');
+      });
+  })
+}
