@@ -59,11 +59,13 @@ const swiperConfigs = {
       '.revievs__slider': {        
           direction: 'horizontal', 
           spaceBetween: 12,  
-          slidesPerView: 1.2,
+          slidesPerView: 'auto',
+          setWrapperSize: false,
+          watchSlidesProgress: true,
           breakpoints: {
             1024: {             
-              slidesPerView: 4,
-              spaceBetween: 32,          
+              slidesPerView: 'auto', 
+              spaceBetween: 32,                  
             }, 
           } ,    
           navigation: {

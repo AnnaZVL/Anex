@@ -4,9 +4,9 @@
     min-height: 100vh; 
     height: 100%;   
     background-image: image-set(
-        '../../images/hero/Hero.avif' type('image/avif'),
-        '../../images/hero/Hero.webp' type('image/webp'),
-        '../../images/hero/Hero.png' type('image/png')
+        '../images/hero/Hero.avif' type('image/avif'),
+        '../images/hero/Hero.webp' type('image/webp'),
+        '../images/hero/Hero.png' type('image/png')
     );
     background-repeat: no-repeat;
     background-position: center;

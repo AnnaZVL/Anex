@@ -8,7 +8,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "gulp",
     "build": "gulp build --prod",
-    "deploy": "npm run build --prod && gh-pages -d dist"
+    "deploy": "npm run build && gh-pages -d dist"
   },
   "author": "",
   "license": "ISC",

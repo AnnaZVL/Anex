@@ -3,9 +3,9 @@
 .feedback {
     height: 605px;
     background-image: image-set(
-        '../../images/feedback/feedback.avif' type('image/avif'),
-        '../../images/feedback/feedback.webp' type('image/webp'),
-        '../../images/feedback/feedback.png' type('image/png')
+        '../images/feedback/feedback.avif' type('image/avif'),
+        '../images/feedback/feedback.webp' type('image/webp'),
+        '../images/feedback/feedback.png' type('image/png')
     );
     background-repeat: no-repeat;
     background-position: center;
@@ -104,11 +104,14 @@
 
 
 @media (max-width: 780px) {
-    .feedback {        
+    .feedback { 
+        &__container.container {
+            padding: 30px;           
+        }     
+
         &__inner {
             margin: 0 auto;
-            height: 366px;
-            width: 90%; 
+            height: 366px;            
             padding: 52px 40px;            
             grid-template-columns: repeat(2, 1fr);
             gap: 14px;
