@@ -1,0 +1,180 @@
+@use '../helpers/variables.scss' as *;
+
+.revievs {
+    padding-top: 175px;
+    padding-bottom: 140px;
+    background-color: $color_white;
+
+    &__title.section-title {
+        text-align: center;
+        margin-bottom: 67px;
+    }
+
+    &__title > .section-title__english {
+        top: -115%;
+        left: 42%;
+    }
+
+    &__inner {        
+        position: relative;
+        z-index: 1;
+        width: 100%;        
+
+        &:hover .revievs__slider-prev, &:hover .revievs__slider-next {            
+            opacity: 1;
+            visibility: visible;          
+        }
+    }
+    &__slider {          
+        height: 575px;    
+        overflow: visible;    
+
+        .swiper-wrapper {
+        display: flex;
+    }
+        &-pagination {            
+            width: 100%;
+            .swiper-pagination-bullet {
+                margin: 0;
+                position: relative;
+                width: 10rem;
+                height: 4px;
+                border-radius: 0;
+                opacity: 1;    
+                background-color: transparent; 
+                
+                &::before {
+                    content: '';
+                    position: absolute;
+                    bottom: 0;
+                    left: 0;
+                    display: inline-block;
+                    background-color: $color_gray-title;
+                    width: 100%;
+                    height: 1px;
+                }
+
+                &-active::before {
+                    background-color: $color_black;
+                    height: 2px;                    
+                }
+            }
+        }  
+        .swiper-slide.revievs-card.revievs__card {
+            width: 342px !important;
+            flex-shrink: 0;            
+        }         
+    }
+    
+    .revievs__slider-next, .revievs__slider-prev {
+        position: absolute;
+        top: 154px;            
+        z-index: 100;
+        width: 32px;
+        height: 32px;
+        background-color: $color_white;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        opacity: 0;
+        visibility: hidden;
+        transition: background 0.3s ease-in-out, opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
+
+        .icon {
+            width: 14px;
+            height: 14px;
+        }
+
+        &.swiper-button-disabled {
+            background-color: $color_gray-light;
+            cursor: not-allowed;
+        }
+    }
+
+    .revievs__slider-next {
+        right: 0;
+        transform: translateX(-32px);
+    }
+
+    .revievs__slider-prev {        
+        left: 0;
+        transform: translateX(-16px);
+    }    
+       
+
+    .revievs-card {   
+        padding: 32px 24px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+        gap: 20px;       
+        height: 364px;
+        background: $color_gray-bg;
+        border-radius: 30px;
+        color: $color_gray-text;
+
+        &__img {
+            width: 64px;
+            height: 64px;
+            border-radius: 50%;
+            border: 1px solid #d9d9d9;
+
+            img {
+                background-repeat: no-repeat;
+                background-position: center;
+                background-size: cover;
+                border-radius: 50%;
+            }
+        }
+        
+        &__rating {
+            margin: 0 auto;
+            margin-bottom: 9px;
+            display: flex;
+            gap: 6px;
+            width: 134px;
+        }
+
+        &__star {
+            background-image: url('../images/sprite.svg#revievs--rating-star');
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: cover;
+            width: 22px;
+            height: 22px;
+        }
+
+        &__top {
+            margin-bottom: 5px;
+            font-weight: 300;
+            font-size: 0.75rem;
+            line-height: 0.875rem;
+            text-align: center;
+        }
+
+        &__name {
+            text-transform: uppercase;
+        }
+
+       &__descr {
+            margin: 0 auto;
+            max-width: 90%;
+
+       }
+
+       &__text {        
+            font-style: normal;
+            font-weight: 300;
+            font-size: 1rem;
+            line-height: 1.375rem;
+            color: var($color_text);
+       }
+
+       &:nth-child(odd) {
+            height: 400px;
+       }
+    }    
+}

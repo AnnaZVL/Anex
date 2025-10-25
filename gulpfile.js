@@ -1,176 +1,143 @@
-const { src, dest, watch, parallel, series } = require('gulp');
+import gulp from "gulp";
+import fileInclude from "gulp-file-include";
+import dartSass from 'gulp-dart-sass';
+import cleanCSS from "gulp-clean-css";
+import terser from "gulp-terser";
+import imagemin from "gulp-imagemin";
+import webp from "gulp-webp";
+import avif from "gulp-avif";
+import svgSprite from "gulp-svg-sprite";
+import ttf2woff2 from "gulp-ttf2woff2";
+import browserSync from "browser-sync";
+import { deleteAsync } from "del";
+import gulpIf from "gulp-if";
+import newer from "gulp-newer";
 
-const scss = require('gulp-sass')(require('sass'));
-const concat = require('gulp-concat');
-const uglify = require('gulp-uglify-es').default;
-const browserSync = require('browser-sync').create();
-const autoprefixer = require('gulp-autoprefixer');
-const clean = require('gulp-clean');
-const include = require('gulp-include');
-const imagemin = require('gulp-imagemin');
-const webp = require('gulp-webp');
-const avif = require('gulp-avif');
-const newer = require('gulp-newer');
-const svg = require('gulp-svg-sprite');
-const fonter = require('gulp-fonter');
-const ttf2woff2 = require('gulp-ttf2woff2');
-const sourcemaps = require('gulp-sourcemaps');
-const gulpif = require('gulp-if');
-const htmlMin = require('gulp-htmlmin');
-const replace = require('gulp-replace');
+const isProd = process.argv.includes("--prod");
 
-let prod = false;
-function isProd(done) {
-    prod = true;
-    done();
+const paths = {
+  html: {
+    src: ["app/pages/**/*.html"],
+    watch: ["app/**/*.html"],
+    dest: "dist/",
+  },
+  scss: {
+    src:["node_modules/swiper/swiper-bundle.css", "app/scss/style.scss"],
+    watch: "app/scss/**/*.scss",
+    dest: "dist/css/",
+  },
+  js: {
+    src: ["node_modules/swiper/swiper-bundle.js", "app/js/**/*.js" ],
+    dest: "dist/js/",
+  },
+  images: {
+    src: "app/images/**/*.{png,jpg,jpeg}",
+    dest: "dist/images/",
+  },
+  svg: {
+    src: ["app/images/**/*.svg", "!app/images/sprite.svg"],
+    dest: "dist/images/",
+  },
+  fonts: {
+    src: "app/fonts/**/*.ttf",
+    dest: "dist/fonts/",
+  },
 };
 
-function htmlPage() {
-    return src('app/pages/*.html')
-        .pipe(include({
-            includePaths: 'app/components'
-        }))
-        .pipe(dest('app'))
-        .pipe(browserSync.stream())
-}
+// Очистка
+export const clean = () => deleteAsync(["dist"]);
 
-function htmlProd() {
-    return src('app/pages/*.html')
-        .pipe(include({
-            includePaths: 'app/components'
-        }))       
-        .pipe(replace('src="/images/', 'src="images/'))
-        .pipe(replace('href="/images/', 'href="images/'))       
-        .pipe(htmlMin({
-            collapseWhitespace: true,
-        }))
-        .pipe(dest('dist'))
-}
-
-function styles() {
-    return src([
-        'node_modules/swiper/swiper-bundle.css', 
-        'app/scss/style.scss'
-        ])
-        .pipe(gulpif(!prod, sourcemaps.init()))           
-        .pipe(scss({
-            outputStyle: prod ? 'compressed' : 'expanded'
-        }))      
-        .pipe(autoprefixer({
-            overrideBrowserslist: ['last 5 versions'],
-            cascade: false
-        }))
-        .pipe(replace('url("/fonts/', 'url("../fonts/'))
-        .pipe(replace("url('/fonts/", "url('../fonts/"))
-        .pipe(replace('../../images/', '../images/'))
-        .pipe(concat('style.min.css'))        
-        .pipe(gulpif(!prod, sourcemaps.write()))
-        .pipe(dest('app/css/'))         
-        .pipe(gulpif(prod, dest('dist/css')))
-        .pipe(browserSync.stream())
-}
-
-function scripts() {
-    return src([
-        'node_modules/swiper/swiper-bundle.js',        
-        'app/js/script.js'
-        ],{ base: '.' })        
-        .pipe(gulpif(!prod, sourcemaps.init()))
-        .pipe(concat('main.min.js'))           
-        .pipe(gulpif(prod, uglify()))
-        .pipe(gulpif(!prod, sourcemaps.write()))
-        .pipe(dest('./app/js/'))        
-        .pipe(gulpif(prod, dest('./dist/js/')))     
-        .pipe(browserSync.stream())               
-};
-
-function imagesAvif() {
-    return src([
-        'app/images/**/*.{jpg,jpeg,png}',
-        '!app/images/**/*.svg',
-        '!app/images/**/*.avif',
-        '!app/images/**/*.webp'
-    ])        
-    .pipe(avif({ quality: 50 }))
-    .on('error', function(err) {
-        console.log('❌ AVIF error (continuing):', err.message);
-        this.emit('end');
-    })
-    .pipe(dest('app/images'));
-}
-
-function imagesMain() {
-    return src([
-        'app/images/**/*.{jpg,jpeg,png}',
-        '!app/images/**/*.svg',
-        '!app/images/**/*.avif', 
-        '!app/images/**/*.webp'
-    ])        
-    .pipe(webp())
-    .pipe(src('app/images/**/*.*'))        
-    .pipe(imagemin())
-    .pipe(dest('app/images'))
-    .pipe(gulpif(prod, dest('dist/images')))    
+// HTML
+export const html = () => 
+    gulp
+    .src(paths.html.src, { allowEmpty: true })
+    .pipe(fileInclude({ prefix: "@@", basepath: "app" }))    
+    .pipe(gulp.dest("dist"))
     .pipe(browserSync.stream());
-}
 
-const images = parallel(imagesAvif, imagesMain);
+// SCSS
+export const styles = () =>
+  gulp
+    .src(paths.scss.src, { allowEmpty: true })
+    .pipe(dartSass().on("error", dartSass.logError))
+    .pipe(gulpIf(isProd, cleanCSS()))
+    .pipe(gulp.dest(paths.scss.dest))
+    .pipe(browserSync.stream());
 
-function svgSprite() {
-    return src(['app/images/**/*.svg', '!app/images/**/sprite.svg',])    
-        .pipe(svg({
-            mode: {
-                symbol: {
-                    sprite: '../sprite.svg',
-                    example: true
-                }
-            }
-        }))       
-        .pipe(dest('app/images'))        
-        .pipe(gulpif(prod, dest('dist/images'))) 
-        .pipe(browserSync.stream()) 
-}
+// JS
+export const scripts = () =>
+  gulp
+    .src(paths.js.src, { allowEmpty: true })
+    .pipe(gulpIf(isProd, terser()))
+    .pipe(gulp.dest(paths.js.dest))
+    .pipe(browserSync.stream());
 
-function fonts() {
-    return src('app/fonts/*.*')
-        .pipe(fonter({
-            formats: ['woff', 'ttf']
-        }))
-        .pipe(src('app/fonts/*.ttf'))
-        .pipe(ttf2woff2())
-        .pipe(dest('app/fonts'))
-        .pipe(gulpif(prod, (dest('dist/fonts'))))    
-        .pipe(browserSync.stream())   
+const originals = () => gulp
+    .src(paths.images.src, { allowEmpty: true })
+    .pipe(newer(paths.images.dest))
+    .pipe(gulpIf(isProd, imagemin()))
+    .pipe(gulp.dest(paths.images.dest));
+
+    const webpImages = () => gulp
+    .src(paths.images.src)
+    .pipe(webp())
+    .pipe(gulp.dest(paths.images.dest));
+
+  // AVIF
+  const avifImages = () => gulp
+    .src(paths.images.src)
+    .pipe(avif())
+    .pipe(gulp.dest(paths.images.dest));
+
+export const images = gulp.parallel(originals, webpImages, avifImages);
+
+// SVG sprite
+export const sprite = () =>
+  gulp
+    .src(paths.svg.src, { allowEmpty: true })    
+    .pipe(
+      svgSprite({
+        mode: { stack: { sprite: "../sprite.svg" } }
+      })
+    )
+    .pipe(gulp.dest(paths.svg.dest))
+    .pipe(browserSync.stream());  
+
+// Fonts
+export const fonts = () =>
+  gulp.src(paths.fonts.src, { allowEmpty: true }).pipe(ttf2woff2()).pipe(gulp.dest(paths.fonts.dest));
+
+// Сервер
+export const serve = () => {
+  browserSync.init({
+    server: {
+      baseDir: "dist",
+      middleware: function (req, res, next) {
+        // Отключаем CSP только для dev-сервера
+        res.setHeader(
+          "Content-Security-Policy",
+          "default-src 'self' 'unsafe-inline' 'unsafe-eval' data: blob:"
+        );
+        next();
+      },
+    },
+    notify: false,
+  });
+
+  gulp.watch(paths.html.watch, html);
+  gulp.watch(paths.scss.watch, styles);
+  gulp.watch(paths.js.src, scripts);
+  gulp.watch(paths.images.src, images);
+  gulp.watch(paths.svg.src, sprite);
+  gulp.watch(paths.fonts.src, fonts);
 };
 
-function watching() {
-    browserSync.init({
-        server: {
-            baseDir: "app/"
-        }
-    });
+// Сборка
+export const build = gulp.series(
+  clean,
+  gulp.parallel(html, styles, scripts, images, sprite, fonts)
+);
 
-    watch(['app/components/*', 'app/pages/*'], htmlPage);
-    watch(['app/scss/**/*.scss'], styles);
-    watch(['app/js/script.js'], scripts); 
-    watch(['app/images'], images);
-    watch(['app/images/**/*.svg'], svgSprite);
-    watch(['app/**/*.html']).on('change', browserSync.reload);   
-};
+export const dev = gulp.series(build, serve);
 
-function cleanDist() {
-    return src('dist', { read: false, allowEmpty: true })
-        .pipe(clean());
-}
-
-exports.htmlPage = htmlPage;
-exports.styles = styles;
-exports.scripts = scripts;
-exports.images = images;
-exports.svgSprite = svgSprite;
-exports.fonts = fonts;
-exports.watching = watching;
-exports.clean = cleanDist;
-
-exports.dev = parallel(htmlPage, styles, scripts, images, svgSprite, fonts, watching);
-exports.build = series(isProd, cleanDist, htmlProd, styles, images, svgSprite, fonts, scripts);
+export default dev;

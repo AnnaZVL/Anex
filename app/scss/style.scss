@@ -6,6 +6,7 @@
 @use 'components/tours.scss' as *;
 @use 'components/hotels.scss' as *;
 @use 'components/feedback.scss' as *;
+@use 'components/revievs.scss' as *;
 
 html {
     scroll-behavior: smooth;
@@ -195,7 +196,9 @@ body {
             &::before {
                 content: '';
                 display: inline-block;
-                background-image: url('../../images/icon/star.svg');
+                background: url('../images/sprite.svg#icon--star') no-repeat;
+                background-size: cover;
+                background-position: center;
                 width: 21px;
                 height: 20px;
                 position: absolute;
@@ -248,7 +251,9 @@ body {
             &::after {
                 content: '';
                 display: inline-block;
-                background-image: url('../../images/icon/line_link.svg');
+                background: url('../images/sprite.svg#icon--line_link') no-repeat;
+                background-size: cover;
+                background-position: center;
                 width: 41px;
                 height: 16px;
                 margin-left: 12px;
